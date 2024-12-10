@@ -1,0 +1,2 @@
+FROM ipfs/go-ipfs:latest
+CMD ["ipfs", "daemon"]

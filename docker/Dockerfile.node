@@ -1,0 +1,6 @@
+FROM golang:1.20
+
+WORKDIR /app
+COPY ./src/node /app
+
+CMD ["go", "run", "main.go"]

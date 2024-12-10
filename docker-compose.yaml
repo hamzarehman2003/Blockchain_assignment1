@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  node1:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.node
+    container_name: node1
+    ports:
+      - "8001:8001"
+
+  node2:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.node
+    container_name: node2
+    ports:
+      - "8002:8002"
+
+  node3:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.node
+    container_name: node3
+    ports:
+      - "8003:8003"
+
+  node4:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.node
+    container_name: node4
+    ports:
+      - "8004:8004"
