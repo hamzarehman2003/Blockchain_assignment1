@@ -14,7 +14,7 @@ type Block struct {
 	Hash         string    // Current block's hash
 }
 
-// Function to compute the hash of the block
+// CalculateHash computes the hash for the block
 func (b *Block) CalculateHash() string {
 	record := string(b.Index) + b.Timestamp.String() + b.Data + b.PreviousHash
 	h := sha256.New()
@@ -22,7 +22,7 @@ func (b *Block) CalculateHash() string {
 	return hex.EncodeToString(h.Sum(nil))
 }
 
-// Function to create a new block
+// NewBlock creates a new block with the given data
 func NewBlock(index int, data string, previousHash string) Block {
 	block := Block{
 		Index:        index,
@@ -32,27 +32,4 @@ func NewBlock(index int, data string, previousHash string) Block {
 	}
 	block.Hash = block.CalculateHash()
 	return block
-}
-
-func main() {
-	// Example: Create a genesis block
-	genesisBlock := NewBlock(0, "Genesis Block", "")
-	
-	// Example: Add another block
-	newBlock := NewBlock(1, "Second Block", genesisBlock.Hash)
-
-	// Print the blocks
-	println("Genesis Block:")
-	println("Index:", genesisBlock.Index)
-	println("Timestamp:", genesisBlock.Timestamp.String())
-	println("Data:", genesisBlock.Data)
-	println("Previous Hash:", genesisBlock.PreviousHash)
-	println("Hash:", genesisBlock.Hash)
-
-	println("\nNew Block:")
-	println("Index:", newBlock.Index)
-	println("Timestamp:", newBlock.Timestamp.String())
-	println("Data:", newBlock.Data)
-	println("Previous Hash:", newBlock.PreviousHash)
-	println("Hash:", newBlock.Hash)
 }
