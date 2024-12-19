@@ -1,6 +1,23 @@
 FROM golang:1.20
 
 WORKDIR /app
-COPY ./src/node /app
 
+# Copy the Go module files first for better caching
+COPY go.mod go.sum ./
+
+# Install dependencies
+RUN go mod tidy
+
+# Copy the rest of the source code into the container
+COPY . .
+# # Copy all necessary files into the container
+# COPY . .
+
+# List files in the container to verify COPY worked correctly
+# RUN ls -R /app
+
+# Install dependencies
+RUN go mod tidy
+
+# Run the application
 CMD ["go", "run", "main.go"]
