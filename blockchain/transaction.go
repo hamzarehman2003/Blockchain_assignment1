@@ -14,7 +14,7 @@ type Transaction struct {
 	Timestamp  time.Time // Timestamp of the transaction
 	AlgoCid    string
 	DatasetCid string
-	Algo       string 	 // Algo name
+	Algo       string // Algo name
 	Signature  []string
 	ResultHash string
 }
