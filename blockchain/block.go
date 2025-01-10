@@ -16,7 +16,7 @@ type Block struct {
 
 // CalculateHash computes the hash for the block
 func (b *Block) CalculateHash() string {
-	record := string(b.Index) + b.Timestamp.String() + b.Data + b.PreviousHash
+	record := string(rune(b.Index)) + b.Timestamp.String() + b.Data + b.PreviousHash
 	h := sha256.New()
 	h.Write([]byte(record))
 	return hex.EncodeToString(h.Sum(nil))
